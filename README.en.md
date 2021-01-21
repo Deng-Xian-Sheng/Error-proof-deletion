@@ -1,23 +1,10 @@
-# Linux防误删除_rm命令的最后一道防线
+# Prevent Linux from mistakenly deleting_ The last line of defense of RM command
 
 #### Description
-人非圣贤，孰能无过；Linux rm命令是及其危险的，数据恢复的代价是沉重的。
-本仓库旨在降低风险，为所有Linux使用者保驾护航！
-
-#### Software Architecture
-Software architecture description
+The Linux RM command is extremely dangerous, and the cost of data recovery is heavy. The purpose of this warehouse is to reduce risk and protect all Linux users!
 
 #### Installation
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
+Add the code to the global. Bashrc file (if you don't want the global to be added to the user specific. Bashrc separately)
 
 #### Contribution
 
