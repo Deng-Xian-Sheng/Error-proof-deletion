@@ -1,0 +1,28 @@
+#使用方法：将本代码添加到全局.bashrc文件中（如果不希望全局也可单独添加在特定用户的.bashrc中）
+#Rm-Command-Warning
+function English1(){
+    read -p 'Are you sure to delete?[Y/n]' confirm1
+    if [[ "$confirm1" == 'y' ]] || [[ "$confirm1" == 'Y' ]]
+    then
+        /bin/rm $*
+    else
+        echo 'Cancelled!'
+    fi
+}
+function Chinese1(){
+    read -p '确定要删除吗？[Y/n]' confirm1
+    if [[ "$confirm1" == 'y' ]] || [[ "$confirm1" == 'Y' ]]
+    then
+        /bin/rm $*
+    else
+        echo '已取消！'
+    fi
+}
+CurrentTerminal=$(tty)
+NoHopeTerminal='tty'
+if [[ "$CurrentTerminal" == *$NoHopeTerminal* ]]
+then
+    alias rm=English1
+else
+    alias rm=Chinese1
+fi
