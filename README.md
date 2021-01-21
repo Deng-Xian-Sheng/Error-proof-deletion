@@ -1,5 +1,7 @@
 # Linux防误删除_rm命令的最后一道防线
 
+<p><a href="/deng_wenyi/Error-proof-deletion/edit/master/README.md">中文</a> | <a href="/deng_wenyi/Error-proof-deletion/edit/master/README.en.md">English</a></p>
+
 #### 介绍
 人非圣贤，孰能无过；Linux rm命令是及其危险的，数据恢复的代价是沉重的。
 本仓库旨在降低风险，为所有Linux使用者保驾护航！
