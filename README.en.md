@@ -4,7 +4,7 @@
 The Linux RM command is extremely dangerous, and the cost of data recovery is heavy. The purpose of this warehouse is to reduce risk and protect all Linux users!
 
 #### Installation
-Add the code to the global. Bashrc file (if you don't want the global to be added to the user specific. Bashrc separately)
+Add the code to the global .bashrc file (if you don't want the global to be added to the user specific .bashrc separately)
 
 #### Contribution
 
