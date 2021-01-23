@@ -1,28 +1,116 @@
 #使用方法：将本代码添加到全局.bashrc文件中（如果不希望全局也可单独添加在特定用户的.bashrc中）
+#How to use: add this code to the global .bashrc file (if you don't want the global to be added to the specific user's .bashrc separately)
 #Rm-Command-Warning
 function English1(){
-    read -p 'Are you sure to delete?[Y/n]' confirm1
-    if [[ "$confirm1" == 'y' ]] || [[ "$confirm1" == 'Y' ]]
+    Array1=(${*// / })
+    for SingleValue in ${Array1[*]}
+    do
+        if [[ "${SingleValue:0:1}" != '-' ]]
+        then
+            RED=$(tput setaf 1)
+            BLUE=$(tput setaf 4)
+            CARMINE=$(tput setaf 5)
+            YEKKOW=$(tput setaf 3)
+            CYAN=$(tput setaf 6)
+            RESET=$(tput sgr0)
+
+            ls ${SingleValue} > /dev/null 2>&1
+            if [[ "${?}" == '2' ]]
+            then
+                File1=$(ls ${SingleValue} 2>&1 )
+                File1="${File1:4}"
+                echo ${CARMINE}${File1}${RESET}
+            else
+            	File1=$(ls ${SingleValue})
+		if [[ "${File1}" == "${SingleValue}" ]]
+		then
+		    echo "${CYAN}Files ${RESET}${YEKKOW}to be deleted:${RESET}${RED}${SingleValue}${RESET}"
+		elif [[ "${File1}" == '' ]]
+		then
+		    echo "${BLUE}Empty directory ${RESET}${YEKKOW}to be deleted:${RESET}${RED}${SingleValue}${RESET}"
+		else
+		    File1=$(ls ${SingleValue})
+		    Limit1='120'
+		    if (( "${#File1}" <= "${Limit1}" ))
+		    then
+		        echo "${YEKKOW}To delete the${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}Directory:${RESET}"
+		        echo ${RED}${File1}${RESET}
+		    else
+                       File1="${File1:0:${Limit1}}"
+                       OmitOutput='……Omit partial output!'
+                       echo "${YEKKOW}To delete the${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}Directory:${RESET}"
+                       echo ${RED}${File1}${RESET}${CARMINE}${OmitOutput}${RESET}
+		    fi
+		fi
+            fi
+        fi
+    done
+    read -p 'Do you want to continue?[Y/n]' confirm1
+    if [[ "${confirm1}" == 'y' ]] || [[ "${confirm1}" == 'Y' ]]
     then
-        /bin/rm $*
+        /bin/rm ${*}
     else
         echo 'Cancelled!'
     fi
 }
 function Chinese1(){
-    read -p '确定要删除吗？[Y/n]' confirm1
-    if [[ "$confirm1" == 'y' ]] || [[ "$confirm1" == 'Y' ]]
+    Array1=(${*// / })
+    for SingleValue in ${Array1[*]}
+    do
+        if [[ "${SingleValue:0:1}" != '-' ]]
+        then
+            RED=$(tput setaf 1)
+            BLUE=$(tput setaf 4)
+            CARMINE=$(tput setaf 5)
+            YEKKOW=$(tput setaf 3)
+            CYAN=$(tput setaf 6)
+            RESET=$(tput sgr0)
+
+            ls ${SingleValue} > /dev/null 2>&1
+            if [[ "${?}" == '2' ]]
+            then
+                File1=$(ls ${SingleValue} 2>&1 )
+                File1="${File1:4}"
+                echo ${CARMINE}${File1}${RESET}
+            else
+            	File1=$(ls ${SingleValue})
+		if [[ "${File1}" == "${SingleValue}" ]]
+		then
+		    echo "${YEKKOW}将要删除的${RESET}${CYAN}文件${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
+		elif [[ "${File1}" == '' ]]
+		then
+		    echo "${YEKKOW}将要删除的${RESET}${BLUE}空目录${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
+		else
+		    File1=$(ls ${SingleValue})
+		    Limit1='120'
+		    if (( "${#File1}" <= "${Limit1}" ))
+		    then
+		        echo "${YEKKOW}将要删除${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}目录下的:${RESET}"
+		        echo ${RED}${File1}${RESET}
+		    else
+                       File1="${File1:0:${Limit1}}"
+                       OmitOutput='……省略部分输出！'
+                       echo "${YEKKOW}将要删除${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}目录下的:${RESET}"
+                       echo ${RED}${File1}${RESET}${CARMINE}${OmitOutput}${RESET}
+		    fi
+		fi
+            fi
+        fi
+    done
+    read -p '你想继续吗？[Y/n]' confirm1
+    if [[ "${confirm1}" == 'y' ]] || [[ "${confirm1}" == 'Y' ]]
     then
-        /bin/rm $*
+        /bin/rm ${*}
     else
         echo '已取消！'
     fi
 }
 CurrentTerminal=$(tty)
 NoHopeTerminal='tty'
-if [[ "$CurrentTerminal" == *$NoHopeTerminal* ]]
+if [[ "${CurrentTerminal}" == *${NoHopeTerminal}* ]]
 then
     alias rm=English1
 else
     alias rm=Chinese1
 fi
+
