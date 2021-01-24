@@ -22,7 +22,7 @@ function English1(){
                 echo ${CARMINE}${File1}${RESET}
             else
             	File1=$(ls ${SingleValue})
-		if [[ "${File1}" == "${SingleValue}" ]]
+		if [[ -f "${SingleValue}" ]]
 		then
 		    echo "${CYAN}Files ${RESET}${YEKKOW}to be deleted:${RESET}${RED}${SingleValue}${RESET}"
 		elif [[ "${File1}" == '' ]]
@@ -74,7 +74,7 @@ function Chinese1(){
                 echo ${CARMINE}${File1}${RESET}
             else
             	File1=$(ls ${SingleValue})
-		if [[ "${File1}" == "${SingleValue}" ]]
+		if [[ -f "${SingleValue}" ]]
 		then
 		    echo "${YEKKOW}将要删除的${RESET}${CYAN}文件${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
 		elif [[ "${File1}" == '' ]]
