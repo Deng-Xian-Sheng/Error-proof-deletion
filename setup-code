@@ -12,6 +12,7 @@ function English1(){
             CARMINE=$(tput setaf 5)
             YEKKOW=$(tput setaf 3)
             CYAN=$(tput setaf 6)
+            GREEN=$(tput setaf 2)
             RESET=$(tput sgr0)
 
             ls ${SingleValue} > /dev/null 2>&1
@@ -24,33 +25,40 @@ function English1(){
             	File1=$(ls ${SingleValue})
 		if [[ -f "${SingleValue}" ]]
 		then
-		    echo "${CYAN}Files ${RESET}${YEKKOW}to be deleted:${RESET}${RED}${SingleValue}${RESET}"
+		    echo "${CYAN}Files ${RESET}${YEKKOW}to delete:${RESET}${RED}${SingleValue}${RESET}"
 		elif [[ "${File1}" == '' ]]
 		then
-		    echo "${BLUE}Empty directory ${RESET}${YEKKOW}to be deleted:${RESET}${RED}${SingleValue}${RESET}"
+		    echo "${BLUE}Empty directory ${RESET}${YEKKOW}to delete:${RESET}${RED}${SingleValue}${RESET}"
 		else
 		    File1=$(ls ${SingleValue})
 		    Limit1='120'
 		    if (( "${#File1}" <= "${Limit1}" ))
 		    then
-		        echo "${YEKKOW}To delete the${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}Directory:${RESET}"
+		        echo "${YEKKOW}To delete${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}and its contents:${RESET}"
 		        echo ${RED}${File1}${RESET}
 		    else
                        File1="${File1:0:${Limit1}}"
-                       OmitOutput='……Omit partial output!'
-                       echo "${YEKKOW}To delete the${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}Directory:${RESET}"
+                       OmitOutput='……Part of the content is omitted!'
+                       echo "${YEKKOW}To delete${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}and its contents:${RESET}"
                        echo ${RED}${File1}${RESET}${CARMINE}${OmitOutput}${RESET}
 		    fi
 		fi
             fi
         fi
     done
-    read -p 'Do you want to continue?[Y/n]' confirm1
+    echo -e "${CYAN}Do you want to continue?${RESET}${YEKKOW} 1s${RESET}${CYAN}|${RESET}${GREEN}3s${RESET}\r\c"
+    read -t 1 -s NullValue
+    echo -e "${CYAN}Do you want to continue?${RESET}${YEKKOW} 2s${RESET}${CYAN}|${RESET}${GREEN}3s${RESET}\r\c"
+    read -t 1 -s NullValue
+    echo -e "${CYAN}Do you want to continue?${RESET}${YEKKOW} 3s${RESET}${CYAN}|${RESET}${GREEN}3s${RESET}\r\c"
+    read -t 1 -s NullValue
+    echo -n "${CYAN}Do you want to continue?${RESET}${CYAN} [${RESET}${RED}Y${RESET}${CYAN}/${RESET}${GREEN}n${RESET}${CYAN}]${RESET}"
+    read confirm1
     if [[ "${confirm1}" == 'y' ]] || [[ "${confirm1}" == 'Y' ]]
     then
         /bin/rm ${*}
     else
-        echo 'Cancelled!'
+        echo "${CYAN}Cancelled!${RESET}"
     fi
 }
 function Chinese1(){
@@ -64,6 +72,7 @@ function Chinese1(){
             CARMINE=$(tput setaf 5)
             YEKKOW=$(tput setaf 3)
             CYAN=$(tput setaf 6)
+            GREEN=$(tput setaf 2)
             RESET=$(tput sgr0)
 
             ls ${SingleValue} > /dev/null 2>&1
@@ -76,33 +85,40 @@ function Chinese1(){
             	File1=$(ls ${SingleValue})
 		if [[ -f "${SingleValue}" ]]
 		then
-		    echo "${YEKKOW}将要删除的${RESET}${CYAN}文件${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
+		    echo "${YEKKOW}要删除的${RESET}${CYAN}文件${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
 		elif [[ "${File1}" == '' ]]
 		then
-		    echo "${YEKKOW}将要删除的${RESET}${BLUE}空目录${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
+		    echo "${YEKKOW}要删除的${RESET}${BLUE}空目录${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
 		else
 		    File1=$(ls ${SingleValue})
 		    Limit1='120'
 		    if (( "${#File1}" <= "${Limit1}" ))
 		    then
-		        echo "${YEKKOW}将要删除${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}目录下的:${RESET}"
+		        echo "${YEKKOW}要删除${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}及其目录下的:${RESET}"
 		        echo ${RED}${File1}${RESET}
 		    else
                        File1="${File1:0:${Limit1}}"
-                       OmitOutput='……省略部分输出！'
-                       echo "${YEKKOW}将要删除${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}目录下的:${RESET}"
+                       OmitOutput='……部分内容省略！'
+                       echo "${YEKKOW}要删除${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}及其目录下的:${RESET}"
                        echo ${RED}${File1}${RESET}${CARMINE}${OmitOutput}${RESET}
 		    fi
 		fi
             fi
         fi
     done
-    read -p '你想继续吗？[Y/n]' confirm1
+    echo -e "${CYAN}你想继续吗？${RESET}${YEKKOW}1s${RESET}${CYAN}|${RESET}${GREEN}3s${RESET}\r\c"
+    read -t 1 -s NullValue
+    echo -e "${CYAN}你想继续吗？${RESET}${YEKKOW}2s${RESET}${CYAN}|${RESET}${GREEN}3s${RESET}\r\c"
+    read -t 1 -s NullValue
+    echo -e "${CYAN}你想继续吗？${RESET}${YEKKOW}3s${RESET}${CYAN}|${RESET}${GREEN}3s${RESET}\r\c"
+    read -t 1 -s NullValue
+    echo -n "${CYAN}你想继续吗？${RESET}${CYAN}[${RESET}${RED}Y${RESET}${CYAN}/${RESET}${GREEN}n${RESET}${CYAN}]${RESET}"
+    read confirm1
     if [[ "${confirm1}" == 'y' ]] || [[ "${confirm1}" == 'Y' ]]
     then
         /bin/rm ${*}
     else
-        echo '已取消！'
+        echo "${CYAN}已取消！${RESET}"
     fi
 }
 CurrentTerminal=$(tty)
