@@ -3,10 +3,8 @@
 <p><a href="README.md">中文</a> | <a href="README.en.md">English</a></p>
 
 #### 介绍
-人非圣贤，孰能无过；Linux rm命令是及其危险的，数据恢复的代价是沉重的。
-本仓库旨在降低风险，为所有Linux使用者保驾护航！
-<img src="https://uosblog.top/wp-content/uploads/2021/01/2021012714342859.png" width="50%"><img src="https://uosblog.top/wp-content/uploads/2021/01/202101271434293.png" width="50%">
-<img src="https://uosblog.top/wp-content/uploads/2021/01/2021012714343019.png" width="50%"><p><a href="https://uosblog.top/?p=311">介绍视频</a> 
+人非圣贤，孰能无过；Linux rm命令是及其危险的，数据恢复的代价是沉重的。本仓库旨在降低风险，为所有Linux使用者保驾护航！
+<img src="https://uosblog.top/wp-content/uploads/2021/01/2021012714342859.png" width="50%"><img src="https://uosblog.top/wp-content/uploads/2021/01/202101271434293.png" width="50%"><img src="https://uosblog.top/wp-content/uploads/2021/01/2021012714343019.png" width="50%"><p><a href="https://uosblog.top/?p=311">介绍视频</a> 
 
 #### 安装教程
 将代码添加到全局.bashrc文件中（如果不希望全局也可单独添加在特定用户的.bashrc中）
