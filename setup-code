@@ -36,7 +36,6 @@ function English1(){
 		    then
 		        echo "${BLUE}Empty directory ${RESET}${YEKKOW}to delete:${RESET}${RED}${SingleValue}${RESET}"
 		    else
-		        File1=$(ls ${SingleValue})
 		        Limit1='120'
 		        if (( "${#File1}" <= "${Limit1}" ))
 		        then
@@ -94,9 +93,34 @@ function English1Sudo(){
                     ls ${SingleValue} > /dev/null 2>&1
                     if [[ "${?}" == '2' ]]
                     then
-                        File1=$(ls ${SingleValue} 2>&1 )
-                        File1="${File1:4}"
-                        echo ${CARMINE}${File1}${RESET}
+                        sudo ls ${SingleValue} > /dev/null 2>&1
+                        if [[ "${?}" == '2' ]]
+                        then
+                            File1=$(sudo ls ${SingleValue} 2>&1 )
+                            File1="${File1:4}"
+                            echo ${CARMINE}${File1}${RESET}
+                        else
+                            File1=$(sudo ls ${SingleValue})
+		            if [[ -f "${SingleValue}" ]]
+		            then
+		                echo "${CYAN}Files ${RESET}${YEKKOW}to delete:${RESET}${RED}${SingleValue}${RESET}"
+		            elif [[ "${File1}" == '' ]]
+		            then
+		                echo "${BLUE}Empty directory ${RESET}${YEKKOW}to delete:${RESET}${RED}${SingleValue}${RESET}"
+		            else
+		                Limit1='120'
+		                if (( "${#File1}" <= "${Limit1}" ))
+		                then
+		                    echo "${YEKKOW}To delete${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}and its contents:${RESET}"
+		                    echo ${RED}${File1}${RESET}
+		                else
+                                   File1="${File1:0:${Limit1}}"
+                                   OmitOutput='……Part of the content is omitted!'
+                                   echo "${YEKKOW}To delete${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}and its contents:${RESET}"
+                                   echo ${RED}${File1}${RESET}${CARMINE}${OmitOutput}${RESET}
+		                fi
+		            fi
+		        fi
                     else
             	        File1=$(ls ${SingleValue})
 		        if [[ -f "${SingleValue}" ]]
@@ -106,7 +130,6 @@ function English1Sudo(){
 		        then
 		            echo "${BLUE}Empty directory ${RESET}${YEKKOW}to delete:${RESET}${RED}${SingleValue}${RESET}"
 		        else
-		            File1=$(ls ${SingleValue})
 		            Limit1='120'
 		            if (( "${#File1}" <= "${Limit1}" ))
 		            then
@@ -176,7 +199,6 @@ function Chinese1(){
 		    then
 		        echo "${YEKKOW}要删除的${RESET}${BLUE}空目录${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
 		    else
-		        File1=$(ls ${SingleValue})
 		        Limit1='120'
 		        if (( "${#File1}" <= "${Limit1}" ))
 		        then
@@ -234,9 +256,34 @@ function Chinese1Sudo(){
                     ls ${SingleValue} > /dev/null 2>&1
                     if [[ "${?}" == '2' ]]
                     then
-                        File1=$(ls ${SingleValue} 2>&1 )
-                        File1="${File1:4}"
-                        echo ${CARMINE}${File1}${RESET}
+                        sudo ls ${SingleValue} > /dev/null 2>&1
+                        if [[ "${?}" == '2' ]]
+                        then
+                            File1=$(sudo ls ${SingleValue} 2>&1 )
+                            File1="${File1:4}"
+                            echo ${CARMINE}${File1}${RESET}
+                        else
+                            File1=$(sudo ls ${SingleValue})
+		            if [[ -f "${SingleValue}" ]]
+		            then
+		                echo "${YEKKOW}要删除的${RESET}${CYAN}文件${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
+		            elif [[ "${File1}" == '' ]]
+		            then
+		                echo "${YEKKOW}要删除的${RESET}${BLUE}空目录${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
+		            else
+		                Limit1='120'
+		                if (( "${#File1}" <= "${Limit1}" ))
+		                then
+		                    echo "${YEKKOW}要删除${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}及其目录下的:${RESET}"
+		                    echo ${RED}${File1}${RESET}
+		                else
+                                   File1="${File1:0:${Limit1}}"
+                                   OmitOutput='……部分内容省略！'
+                                   echo "${YEKKOW}要删除${RESET}${BLUE}${SingleValue}${RESET}${YEKKOW}及其目录下的:${RESET}"
+                                   echo ${RED}${File1}${RESET}${CARMINE}${OmitOutput}${RESET}
+		                fi
+		            fi
+		        fi
                     else
             	        File1=$(ls ${SingleValue})
 		        if [[ -f "${SingleValue}" ]]
@@ -246,7 +293,6 @@ function Chinese1Sudo(){
 		        then
 		            echo "${YEKKOW}要删除的${RESET}${BLUE}空目录${RESET}${YEKKOW}:${RESET}${RED}${SingleValue}${RESET}"
 		        else
-		            File1=$(ls ${SingleValue})
 		            Limit1='120'
 		            if (( "${#File1}" <= "${Limit1}" ))
 		            then
