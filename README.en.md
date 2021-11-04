@@ -5,7 +5,7 @@ The Linux RM command is extremely dangerous, and the cost of data recovery is he
 
 #### Installation
 Add the code to the global .bashrc file (if you don't want the global to be added to the user specific .bashrc separately)
-
+Note that it also supports Zsh!
 #### Contribution
 
 1.  Fork the repository
